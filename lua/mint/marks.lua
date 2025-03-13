@@ -1,7 +1,7 @@
 local M = {}
 
-local dsutils = require('fruet.utils.ds')
-local hlutils = require('fruet.utils.hl')
+local dsutils = require('mint.utils.ds')
+local hlutils = require('mint.utils.hl')
 
 local lclet = {}
 local uclet = {}
@@ -277,7 +277,7 @@ local function show_local_marks2()
         vim.api.nvim_buf_add_highlight(float_bufnr, ns_id, '@text.warning', i, 1, 2)
 
         for _, hldetails in pairs(hlutils.buf_get_ts_highlights(bufnr, mark.lnum)) do
-            local start_col, end_col, hl_group = table.unpack(hldetails)
+            local start_col, end_col, hl_group = unpack(hldetails)
             vim.api.nvim_buf_add_highlight(float_bufnr, ns_id, hl_group, i, start_col+pad, end_col+pad)
         end
 
